@@ -30,7 +30,20 @@ const { title = 'Esphera – Soluções em frotas automotivas', description = 'M
         },
         { rootMargin: '0px 0px -60px 0px', threshold: 0.1 }
       );
-      document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+      const observed = new WeakSet();
+      function observeReveal() {
+        document.querySelectorAll('[data-reveal]').forEach((el) => {
+          if (observed.has(el)) return;
+          observed.add(el);
+          observer.observe(el);
+        });
+      }
+      observeReveal();
+      setTimeout(observeReveal, 100);
+      setTimeout(observeReveal, 500);
+      setTimeout(observeReveal, 1500);
+      const mo = new MutationObserver(observeReveal);
+      mo.observe(document.body, { childList: true, subtree: true });
     </script>
   </body>
 </html>

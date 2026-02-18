@@ -65,20 +65,15 @@
     border-color: rgba(14, 165, 233, 0.3);
     box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
   }
+}
 
-  &[data-reveal] {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-      box-shadow 0.25s ease,
-      border-color 0.2s ease;
-  }
-
-  &.reveal-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Seção Serviços sempre visível */
+.section .heading,
+.section .subheading,
+.section .grid,
+.section .card {
+  opacity: 1;
+  transform: none;
 }
 
 .cardIcon {

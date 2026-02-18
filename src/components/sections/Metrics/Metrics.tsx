@@ -37,15 +37,15 @@ export function Metrics() {
   return (
     <section className={styles.section} id="metricas" ref={ref}>
       <div className={styles.inner}>
-        <h2 className={styles.heading} data-reveal>
+        <h2 className={styles.heading}>
           Resultados que <span className={styles.highlight}>contam</span>
         </h2>
-        <p className={styles.subheading} data-reveal>
+        <p className={styles.subheading}>
           Melhoria contínua e redução de custo para frotas automotivas.
         </p>
 
         <div className={styles.grid}>
-          <div className={styles.card} data-reveal>
+          <div className={styles.card}>
             <div className={styles.value}>
               <span className={styles.number}>
                 {inView ? <CountUp end={30} duration={1500} /> : 0}
@@ -54,20 +54,20 @@ export function Metrics() {
             </div>
             <p className={styles.label}>Menos custos operacionais</p>
           </div>
-          <div className={styles.card} data-reveal>
+          <div className={styles.card}>
             <div className={styles.value}>
               <span className={styles.glow}>Redução</span>
             </div>
             <p className={styles.label}>Consumo de combustível</p>
           </div>
-          <div className={styles.card} data-reveal>
+          <div className={styles.card}>
             <div className={styles.value}>
               <span className={styles.number}>+</span>
               <span className={styles.glow}>Produtividade</span>
             </div>
             <p className={styles.label}>Da frota</p>
           </div>
-          <div className={styles.card} data-reveal>
+          <div className={styles.card}>
             <div className={styles.value}>
               <span className={styles.glow}>ROI</span>
             </div>

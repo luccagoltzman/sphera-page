@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback } from 'react';
+import { useRef, useCallback, useState } from 'react';
 import styles from './Services.module.scss';
 
 const SERVICES = [
@@ -41,31 +41,33 @@ const SERVICES = [
 
 function useTilt() {
   const ref = useRef<HTMLDivElement>(null);
-  const [transform, setTransform] = useState('');
 
   const onMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
     const tiltX = y * -8;
     const tiltY = x * 8;
-    setTransform(`perspective(600px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`);
+    el.style.transform = `perspective(600px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
   }, []);
 
-  const onMouseLeave = useCallback(() => setTransform(''), []);
+  const onMouseLeave = useCallback(() => {
+    if (ref.current) ref.current.style.transform = '';
+  }, []);
 
-  return { ref, style: { transform }, onMouseMove, onMouseLeave };
+  return { ref, onMouseMove, onMouseLeave };
 }
 
 export function Services() {
   return (
     <section className={styles.section} id="servicos">
       <div className={styles.inner}>
-        <h2 className={styles.heading} data-reveal>
+        <h2 className={styles.heading}>
           Serviços e <span className={styles.highlight}>soluções</span>
         </h2>
-        <p className={styles.subheading} data-reveal>
+        <p className={styles.subheading}>
           Serviços especializados para frotas automotivas.
         </p>
 
@@ -93,10 +95,8 @@ function ServiceCard({
     <div
       ref={tilt.ref}
       className={styles.card}
-      style={tilt.style}
       onMouseMove={tilt.onMouseMove}
       onMouseLeave={tilt.onMouseLeave}
-      data-reveal
     >
       <span className={styles.cardIcon} aria-hidden>
         {icon}

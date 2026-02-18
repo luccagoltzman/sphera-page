@@ -55,18 +55,6 @@
   border: 1px solid rgba(148, 163, 184, 0.1);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
-  &[data-reveal] {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  &.reveal-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
   &:hover {
     border-color: rgba(14, 165, 233, 0.25);
     box-shadow: 0 0 30px -10px rgba(14, 165, 233, 0.2);
@@ -107,4 +95,13 @@
   margin: 0;
   font-size: 0.9375rem;
   color: #94a3b8;
+}
+
+/* Seção Métricas sempre visível */
+.section .heading,
+.section .subheading,
+.section .grid,
+.section .card {
+  opacity: 1;
+  transform: none;
 }

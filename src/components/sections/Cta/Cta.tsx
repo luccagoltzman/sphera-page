@@ -29,18 +29,14 @@ export function Cta() {
     <section className={styles.section} id="cta">
       <div className={styles.bg} aria-hidden />
       <div className={styles.inner}>
-        <h2 className={styles.heading} data-reveal>
+        <h2 className={styles.heading}>
           Pronto para melhorar a gestão da sua frota?
         </h2>
-        <p className={styles.subheading} data-reveal>
+        <p className={styles.subheading}>
           Solicite um orçamento ou fale com nossa equipe.
         </p>
 
-        <form
-          className={styles.form}
-          onSubmit={handleSubmit}
-          data-reveal
-        >
+        <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.row}>
             <label className={styles.label} htmlFor="nome">
               Nome
