@@ -19,5 +19,16 @@ const { title = 'Sphera – Controle total da sua frota', description = 'Rastrea
   </head>
   <body>
     <slot />
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add('reveal-visible');
+          });
+        },
+        { rootMargin: '0px 0px -60px 0px', threshold: 0.1 }
+      );
+      document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+    </script>
   </body>
 </html>

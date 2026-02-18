@@ -1,0 +1,110 @@
+.section {
+  padding-block: 3rem;
+  background-color: #0f172a;
+  @media (min-width: 768px) {
+    padding-block: 4rem;
+  }
+  @media (min-width: 992px) {
+    padding-block: 5rem;
+  }
+}
+
+.inner {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  @media (min-width: 992px) {
+    padding-inline: 2rem;
+  }
+}
+
+.heading {
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  text-align: center;
+  margin: 0 0 0.5rem;
+  color: #f8fafc;
+}
+
+.highlight {
+  color: #0ea5e9;
+}
+
+.subheading {
+  text-align: center;
+  color: #94a3b8;
+  max-width: 42ch;
+  margin: 0 auto 2.5rem;
+  font-size: 1.125rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &[data-reveal] {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  &.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &:hover {
+    border-color: rgba(14, 165, 233, 0.25);
+    box-shadow: 0 0 30px -10px rgba(14, 165, 233, 0.2);
+  }
+}
+
+.value {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.number {
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0ea5e9;
+  line-height: 1;
+}
+
+.suffix {
+  font-size: 1.5rem;
+  color: #0ea5e9;
+  font-weight: 600;
+}
+
+.glow {
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #38bdf8;
+  text-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+}
+
+.label {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: #94a3b8;
+}
