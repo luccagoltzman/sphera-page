@@ -19,3 +19,9 @@ npm run dev
 ```
 
 Build: `npm run build` | Preview: `npm run preview`
+
+## Mídia
+
+- **Hero:** Vídeo de fundo (caminhão na estrada, Mixkit) em `src/config/video.ts` (`HERO_VIDEO_SRC`). Se o vídeo não carregar, a imagem de `src/config/images.ts` (`HERO_BACKGROUND`) é exibida. Para usar arquivo local: coloque `hero.mp4` em `public/videos/` e use `HERO_VIDEO_SRC = '/videos/hero.mp4'`.
+- **CTA:** Imagem de fundo em `src/config/images.ts` (`CTA_BACKGROUND`).
+- **Logo:** Header e Footer. Arquivo local: `public/img/logo_esphera.png`.

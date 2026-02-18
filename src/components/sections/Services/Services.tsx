@@ -1,4 +1,5 @@
-import { useRef, useCallback, useState } from 'react';
+import { useRef, useCallback } from 'react';
+import { SECTION_IMAGES } from '../../../config/images';
 import styles from './Services.module.scss';
 
 const SERVICES = [
@@ -70,6 +71,10 @@ export function Services() {
         <p className={styles.subheading}>
           Serviços especializados para frotas automotivas.
         </p>
+
+        <div className={`interactive-image ${styles.visual}`} data-interactive-image>
+          <img src={SECTION_IMAGES.servicos} alt="Serviços para frotas" />
+        </div>
 
         <div className={styles.grid}>
           {SERVICES.map((s) => (

@@ -33,8 +33,15 @@
   text-align: center;
   color: #94a3b8;
   max-width: 42ch;
-  margin: 0 auto 2.5rem;
+  margin: 0 auto 2rem;
   font-size: 1.125rem;
+}
+
+.visual {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+  min-width: 0;
 }
 
 .grid {
@@ -52,9 +59,9 @@
 }
 
 .card {
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(148, 163, 184, 0.12);
   border-radius: 1rem;
   padding: 1.75rem;
@@ -62,8 +69,9 @@
     box-shadow 0.25s ease, border-color 0.2s ease;
 
   &:hover {
-    border-color: rgba(14, 165, 233, 0.3);
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
+    border-color: rgba(14, 165, 233, 0.35);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.45),
+      0 0 40px -20px rgba(14, 165, 233, 0.2);
   }
 }
 

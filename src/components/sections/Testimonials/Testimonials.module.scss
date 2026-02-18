@@ -36,6 +36,13 @@
   font-size: 1.125rem;
 }
 
+.visual {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+  min-width: 0;
+}
+
 .carousel {
   position: relative;
 }

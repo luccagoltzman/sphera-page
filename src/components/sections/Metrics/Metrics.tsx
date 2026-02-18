@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { SECTION_IMAGES } from '../../../config/images';
 import styles from './Metrics.module.scss';
 
 function CountUp({ end, duration }: { end: number; duration: number }) {
@@ -43,6 +44,10 @@ export function Metrics() {
         <p className={styles.subheading}>
           Melhoria contínua e redução de custo para frotas automotivas.
         </p>
+
+        <div className={`interactive-image ${styles.visual}`} data-interactive-image>
+          <img src={SECTION_IMAGES.metricas} alt="Resultados e métricas" />
+        </div>
 
         <div className={styles.grid}>
           <div className={styles.card}>

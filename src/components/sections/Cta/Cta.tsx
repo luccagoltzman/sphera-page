@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button } from '@components/ui/Button';
+import { CTA_BACKGROUND } from '../../../config/images';
 import styles from './Cta.module.scss';
 
 export function Cta() {
@@ -27,7 +28,11 @@ export function Cta() {
 
   return (
     <section className={styles.section} id="cta">
-      <div className={styles.bg} aria-hidden />
+      <div
+        className={styles.bg}
+        style={{ backgroundImage: `url(${CTA_BACKGROUND})` }}
+        aria-hidden
+      />
       <div className={styles.inner}>
         <h2 className={styles.heading}>
           Pronto para melhorar a gestão da sua frota?

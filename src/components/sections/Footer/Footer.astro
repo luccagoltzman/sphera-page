@@ -9,12 +9,15 @@ const links = [
 
 const whatsapp1 = 'https://wa.me/5511972880019';
 const whatsapp2 = 'https://wa.me/5511947918825';
+const logoUrl = 'https://espherasolucoes.com.br/medias/img/logo_esphera.png';
 ---
 <footer class="footer" id="contato">
   <div class="footer__inner">
     <div class="footer__grid">
       <div class="footer__brand">
-        <strong class="footer__logo">Esphera</strong>
+        <a href="#hero" class="footer__logo">
+          <img src={logoUrl} alt="Esphera - Soluções em frotas automotivas" width="140" height="44" />
+        </a>
         <p class="footer__tagline">
           Soluções em frotas automotivas. Melhoria contínua e redução de custo.
         </p>
@@ -82,11 +85,18 @@ const whatsapp2 = 'https://wa.me/5511947918825';
     }
 
     &__logo {
-      font-family: 'Outfit', system-ui, sans-serif;
-      font-size: 1.5rem;
-      color: #f8fafc;
-      display: block;
-      margin-bottom: 0.5rem;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      background: #030712;
+
+      img {
+        height: 38px;
+        width: auto;
+        object-fit: contain;
+        mix-blend-mode: multiply;
+      }
     }
 
     &__tagline {

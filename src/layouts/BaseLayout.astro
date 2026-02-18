@@ -1,5 +1,6 @@
 ---
 import '../styles/global.scss';
+import Header from '@components/sections/Header/Header.astro';
 
 interface Props {
   title?: string;
@@ -20,6 +21,7 @@ const { title = 'Esphera – Soluções em frotas automotivas', description = 'M
     <title>{title}</title>
   </head>
   <body>
+    <Header />
     <slot />
     <script>
       const observer = new IntersectionObserver(
@@ -44,6 +46,25 @@ const { title = 'Esphera – Soluções em frotas automotivas', description = 'M
       setTimeout(observeReveal, 1500);
       const mo = new MutationObserver(observeReveal);
       mo.observe(document.body, { childList: true, subtree: true });
+
+      // Imagem interativa: spotlight segue o cursor
+      const onMove = (e) => {
+        const el = e.target.closest('[data-interactive-image]');
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        el.style.setProperty('--spot-x', x + '%');
+        el.style.setProperty('--spot-y', y + '%');
+        el.style.setProperty('--spot-opacity', '1');
+      };
+      const onOut = (e) => {
+        const el = e.target.closest('[data-interactive-image]');
+        if (el && (!e.relatedTarget || !el.contains(e.relatedTarget)))
+          el.style.setProperty('--spot-opacity', '0');
+      };
+      document.body.addEventListener('mousemove', onMove);
+      document.body.addEventListener('mouseout', onOut);
     </script>
   </body>
 </html>

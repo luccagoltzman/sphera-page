@@ -34,10 +34,12 @@
 .primary {
   background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
   color: #fff;
-  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.35);
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
 
   &:hover {
-    box-shadow: 0 6px 28px rgba(14, 165, 233, 0.45);
+    box-shadow: 0 8px 32px rgba(14, 165, 233, 0.5),
+      0 0 0 1px rgba(255, 255, 255, 0.15) inset;
   }
 }
 

@@ -1,4 +1,7 @@
 ---
+import InteractiveImage from '@components/ui/InteractiveImage/InteractiveImage.astro';
+import { SECTION_IMAGES } from '../../../config/images';
+
 const items = [
   'Suporte especializado',
   'Tecnologia avançada',
@@ -16,7 +19,14 @@ const items = [
       Diferenciais que fazem a diferença na gestão da sua frota automotiva.
     </p>
 
-    <ul class="differentiators__list">
+    <div class="differentiators__row">
+      <div class="differentiators__visual" data-reveal>
+        <InteractiveImage
+          src={SECTION_IMAGES.diferenciais}
+          alt="Equipe e diferenciais Esphera"
+        />
+      </div>
+      <ul class="differentiators__list">
       {items.map((item, i) => (
         <li class="differentiators__item" data-reveal>
           <span class="check" aria-hidden>✔</span>
@@ -24,6 +34,7 @@ const items = [
         </li>
       ))}
     </ul>
+    </div>
   </div>
 </section>
 
@@ -47,10 +58,35 @@ const items = [
       }
     }
 
+    &__row {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      @media (min-width: 992px) {
+        flex-direction: row;
+        align-items: center;
+        gap: 3rem;
+      }
+    }
+
+    &__visual {
+      flex-shrink: 0;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      @media (min-width: 992px) {
+        width: 36%;
+        max-width: 360px;
+      }
+    }
+
     &__list {
       list-style: none;
-      margin: 2.5rem 0 0;
+      margin: 0;
       padding: 0;
+      flex: 1;
+      min-width: 0;
       display: grid;
       gap: 1rem;
       @media (min-width: 768px) {

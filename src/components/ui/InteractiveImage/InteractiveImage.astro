@@ -1,0 +1,11 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+}
+const { src, alt, class: className = '' } = Astro.props;
+---
+<div class={`interactive-image ${className}`} data-interactive-image>
+  <img src={src} alt={alt} width="800" height="500" />
+</div>

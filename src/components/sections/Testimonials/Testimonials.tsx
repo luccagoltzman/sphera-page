@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
+import { SECTION_IMAGES } from '../../../config/images';
 import styles from './Testimonials.module.scss';
 
 const ITEMS = [
@@ -48,6 +49,10 @@ export function Testimonials() {
         <p className={styles.subheading} data-reveal>
           Depoimentos de quem já conta com a Esphera.
         </p>
+
+        <div className={`interactive-image ${styles.visual}`} data-interactive-image>
+          <img src={SECTION_IMAGES.depoimentos} alt="Clientes que confiam" />
+        </div>
 
         <div className={styles.carousel}>
           <div className={styles.track}>
