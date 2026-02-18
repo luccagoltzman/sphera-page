@@ -1,0 +1,107 @@
+---
+const items = [
+  'Suporte especializado',
+  'Tecnologia avançada',
+  'Relatórios inteligentes',
+  'Implantação rápida',
+  'Atendimento personalizado',
+];
+---
+<section class="differentiators" id="diferenciais">
+  <div class="differentiators__inner">
+    <h2 class="section-heading" data-reveal>
+      Por que <span class="highlight">Sphera</span>?
+    </h2>
+    <p class="section-subheading" data-reveal>
+      Diferenciais que fazem a diferença na gestão da sua frota.
+    </p>
+
+    <ul class="differentiators__list">
+      {items.map((item, i) => (
+        <li class="differentiators__item" data-reveal>
+          <span class="check" aria-hidden>✔</span>
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style lang="scss">
+  .differentiators {
+    padding-block: 3rem;
+    background-color: #0f172a;
+    @media (min-width: 768px) {
+      padding-block: 4rem;
+    }
+    @media (min-width: 992px) {
+      padding-block: 5rem;
+    }
+
+    &__inner {
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 1.5rem;
+      @media (min-width: 992px) {
+        padding-inline: 2rem;
+      }
+    }
+
+    &__list {
+      list-style: none;
+      margin: 2.5rem 0 0;
+      padding: 0;
+      display: grid;
+      gap: 1rem;
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 700px;
+        margin-inline: auto;
+      }
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      background: rgba(30, 41, 59, 0.4);
+      border: 1px solid rgba(148, 163, 184, 0.1);
+      border-radius: 0.5rem;
+      font-size: 1.0625rem;
+      color: #e2e8f0;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+
+      &:hover {
+        transform: translateX(6px);
+        border-color: rgba(14, 165, 233, 0.25);
+      }
+
+      .check {
+        color: #10b981;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  .section-heading,
+  .section-subheading {
+    text-align: center;
+  }
+
+  .highlight {
+    color: #0ea5e9;
+  }
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &.reveal-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

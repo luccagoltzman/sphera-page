@@ -1,0 +1,21 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { Hero } from '@components/sections/Hero';
+import ProblemSolution from '@components/sections/ProblemSolution/ProblemSolution.astro';
+import { Services } from '@components/sections/Services';
+import { Metrics } from '@components/sections/Metrics';
+import { Testimonials } from '@components/sections/Testimonials';
+import Differentiators from '@components/sections/Differentiators/Differentiators.astro';
+import { Cta } from '@components/sections/Cta';
+import Footer from '@components/sections/Footer/Footer.astro';
+---
+<BaseLayout>
+  <Hero client:load />
+  <ProblemSolution />
+  <Services client:visible />
+  <Metrics client:visible />
+  <Testimonials client:visible />
+  <Differentiators />
+  <Cta client:load />
+  <Footer />
+</BaseLayout>
