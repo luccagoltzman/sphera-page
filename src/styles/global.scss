@@ -1,0 +1,81 @@
+// ============================================
+// SPHERA – Estilos globais
+// ============================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@500;600;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: $font-sans;
+  font-size: $text-base;
+  line-height: $leading-normal;
+  color: $color-text;
+  background-color: $color-bg;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: $color-primary-light;
+  text-decoration: none;
+  transition: color $duration-fast $ease-out-expo;
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-display;
+  font-weight: 600;
+  line-height: $leading-tight;
+}
+
+:focus-visible {
+  outline: 2px solid $color-primary;
+  outline-offset: 2px;
+}
+
+// Utilidades para seções
+.section-heading {
+  font-size: $text-3xl;
+  @include respond-to('md') { font-size: $text-4xl; }
+  @include respond-to('lg') { font-size: $text-5xl; }
+  margin-block-end: $space-md;
+  color: $color-text;
+}
+
+.section-subheading {
+  font-size: $text-lg;
+  color: $color-text-muted;
+  max-width: 42ch;
+  margin-inline: auto;
+}
