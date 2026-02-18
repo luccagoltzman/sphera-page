@@ -3,19 +3,39 @@ import styles from './Services.module.scss';
 
 const SERVICES = [
   {
-    icon: '📍',
-    title: 'Rastreamento Veicular',
-    description: 'Localização precisa e monitoramento 24h.',
+    icon: '🔍',
+    title: 'Vistorias Automotivas',
+    description: 'Vistorias completas para segurança e conformidade da frota.',
   },
   {
-    icon: '📊',
-    title: 'Telemetria',
-    description: 'Controle de consumo, direção e desempenho.',
+    icon: '📚',
+    title: 'Treinamentos',
+    description: 'Capacitação para equipes e gestores de frotas.',
   },
   {
-    icon: '🧾',
-    title: 'Gestão de Custos',
-    description: 'Reduza desperdícios e aumente lucro.',
+    icon: '📋',
+    title: 'Laudos Técnicos',
+    description: 'Documentação técnica e pareceres especializados.',
+  },
+  {
+    icon: '🛠️',
+    title: 'Inspeção de Capacitação Técnica',
+    description: 'Avaliação de oficinas e capacitação técnica.',
+  },
+  {
+    icon: '💼',
+    title: 'Assessoria Técnica',
+    description: 'Consultoria e suporte técnico para sua operação.',
+  },
+  {
+    icon: '🌱',
+    title: 'Saúde, Segurança e Meio Ambiente',
+    description: 'SSMA e conformidade ambiental para frotas.',
+  },
+  {
+    icon: '✨',
+    title: 'Limpeza e Conservação de Frotas',
+    description: 'Cuidado e preservação dos veículos da frota.',
   },
 ];
 
@@ -46,7 +66,7 @@ export function Services() {
           Serviços e <span className={styles.highlight}>soluções</span>
         </h2>
         <p className={styles.subheading} data-reveal>
-          Tudo que sua frota precisa em uma única plataforma.
+          Serviços especializados para frotas automotivas.
         </p>
 
         <div className={styles.grid}>

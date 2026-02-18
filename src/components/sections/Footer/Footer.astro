@@ -1,24 +1,22 @@
 ---
 const links = [
+  { label: 'Quem somos', href: '#problema-solucao' },
   { label: 'Serviços', href: '#servicos' },
-  { label: 'Resultados', href: '#metricas' },
-  { label: 'Depoimentos', href: '#depoimentos' },
+  { label: 'Cases', href: '#depoimentos' },
   { label: 'Orçamento', href: '#cta' },
+  { label: 'Contato', href: '#contato' },
 ];
 
-const socials = [
-  { label: 'LinkedIn', href: '#', icon: 'in' },
-  { label: 'Instagram', href: '#', icon: 'ig' },
-  { label: 'WhatsApp', href: '#', icon: 'wa' },
-];
+const whatsapp1 = 'https://wa.me/5511972880019';
+const whatsapp2 = 'https://wa.me/5511947918825';
 ---
 <footer class="footer" id="contato">
   <div class="footer__inner">
     <div class="footer__grid">
       <div class="footer__brand">
-        <strong class="footer__logo">Sphera</strong>
+        <strong class="footer__logo">Esphera</strong>
         <p class="footer__tagline">
-          Controle total da sua frota. Rastreamento, telemetria e gestão inteligente.
+          Soluções em frotas automotivas. Melhoria contínua e redução de custo.
         </p>
       </div>
 
@@ -36,26 +34,22 @@ const socials = [
       <div class="footer__contact">
         <span class="footer__navTitle">Contato</span>
         <address class="footer__address">
-          <p>contato@sphera.com.br</p>
-          <p>(00) 0000-0000</p>
-          <p>Av. Exemplo, 1000 — Cidade / UF</p>
+          <p><a href="mailto:contato@espherasolucoes.com.br">contato@espherasolucoes.com.br</a></p>
+          <p><a href={whatsapp1} target="_blank" rel="noopener noreferrer">(11) 97288-0019</a></p>
+          <p><a href={whatsapp2} target="_blank" rel="noopener noreferrer">(11) 94791-8825</a></p>
         </address>
       </div>
 
       <div class="footer__social">
-        <span class="footer__navTitle">Redes</span>
+        <span class="footer__navTitle">Atendimento</span>
         <div class="footer__socialLinks">
-          {socials.map((s) => (
-            <a href={s.href} aria-label={s.label} class="footer__socialLink">
-              {s.label}
-            </a>
-          ))}
+          <a href={whatsapp1} target="_blank" rel="noopener noreferrer" class="footer__socialLink" aria-label="WhatsApp (11) 97288-0019">WhatsApp</a>
         </div>
       </div>
     </div>
 
     <div class="footer__bottom">
-      <p>&copy; {new Date().getFullYear()} Sphera. Todos os direitos reservados.</p>
+      <p>&copy; {new Date().getFullYear()} Esphera Soluções em Frotas. Todos os direitos reservados.</p>
     </div>
   </div>
 </footer>

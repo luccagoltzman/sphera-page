@@ -4,21 +4,21 @@ import styles from './Testimonials.module.scss';
 const ITEMS = [
   {
     quote:
-      'A Sphera transformou nossa gestão de frota. Reduzimos custos e ganhamos controle total.',
+      'A Esphera trouxe organização e conformidade para nossa frota. Melhoria contínua de verdade.',
     author: 'Carlos M.',
     role: 'Diretor de Operações',
   },
   {
     quote:
-      'Relatórios claros e suporte rápido. Hoje tomamos decisões baseadas em dados reais.',
+      'Vistorias e treinamentos de qualidade. Suporte técnico que faz a diferença no dia a dia.',
     author: 'Ana Paula R.',
     role: 'Gerente de Frota',
   },
   {
     quote:
-      'Implementação rápida e resultados em poucas semanas. Recomendo fortemente.',
+      'Implementação rápida e resultados concretos. Recomendo para quem leva frota a sério.',
     author: 'Roberto L.',
-    role: 'CEO, Transportes & Cia',
+    role: 'Gestor de Frotas',
   },
 ];
 
@@ -46,7 +46,7 @@ export function Testimonials() {
           Quem <span className={styles.highlight}>confia</span>
         </h2>
         <p className={styles.subheading} data-reveal>
-          Depoimentos de quem já usa a Sphera no dia a dia.
+          Depoimentos de quem já conta com a Esphera.
         </p>
 
         <div className={styles.carousel}>

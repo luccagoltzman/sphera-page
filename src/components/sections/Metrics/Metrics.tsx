@@ -41,7 +41,7 @@ export function Metrics() {
           Resultados que <span className={styles.highlight}>contam</span>
         </h2>
         <p className={styles.subheading} data-reveal>
-          Números reais de quem já transformou a gestão da frota.
+          Melhoria contínua e redução de custo para frotas automotivas.
         </p>
 
         <div className={styles.grid}>

@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { Button } from '@components/ui/Button';
 import styles from './Hero.module.scss';
 
-const HEADLINE = 'Controle total da sua frota. Reduza custos. Aumente eficiência.';
-const SUBHEADLINE = 'Rastreamento, telemetria e gestão inteligente em uma única solução.';
+const HEADLINE = 'Soluções em frotas automotivas.';
+const SUBHEADLINE = 'Melhoria contínua, redução de custo e gestão profissional da sua frota.';
 
 export function Hero() {
   const [displayedHeadline, setDisplayedHeadline] = useState('');
@@ -44,7 +44,7 @@ export function Hero() {
           <Button href="#cta" variant="primary">
             Solicitar Orçamento
           </Button>
-          <Button href="#contato" variant="secondary">
+          <Button href="https://wa.me/5511972880019" variant="secondary" target="_blank" rel="noopener noreferrer">
             Falar com Especialista
           </Button>
         </div>

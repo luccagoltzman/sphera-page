@@ -20,8 +20,9 @@ export function Button({
   const classNames = [styles.btn, styles[variant], className].filter(Boolean).join(' ');
 
   if (href) {
+    const { type: _t, ...anchorProps } = props;
     return (
-      <a href={href} className={classNames} role="button">
+      <a href={href} className={classNames} role="button" {...anchorProps}>
         {children}
       </a>
     );

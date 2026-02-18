@@ -30,10 +30,10 @@ export function Cta() {
       <div className={styles.bg} aria-hidden />
       <div className={styles.inner}>
         <h2 className={styles.heading} data-reveal>
-          Pronto para reduzir custos da sua frota?
+          Pronto para melhorar a gestão da sua frota?
         </h2>
         <p className={styles.subheading} data-reveal>
-          Solicite uma análise gratuita.
+          Solicite um orçamento ou fale com nossa equipe.
         </p>
 
         <form
