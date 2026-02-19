@@ -43,34 +43,58 @@
   min-width: 0;
 }
 
-.carousel {
+// Scroll horizontal com snap
+.scrollWrap {
   position: relative;
+  margin-inline: -1.5rem;
+  @media (min-width: 992px) {
+    margin-inline: -2rem;
+  }
 }
 
-.track {
-  position: relative;
-  min-height: 220px;
+.horizontalScroll {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 0.5rem 1.5rem 1.5rem;
+  margin-bottom: -0.5rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(14, 165, 233, 0.5) rgba(15, 23, 42, 0.3);
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.3);
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(14, 165, 233, 0.5);
+    border-radius: 4px;
+  }
 }
 
 .card {
-  position: absolute;
-  inset: 0;
+  flex: 0 0 auto;
+  width: min(320px, 85vw);
+  min-height: 200px;
   margin: 0;
   padding: 2rem;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
   background: rgba(15, 23, 42, 0.6);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(148, 163, 184, 0.12);
   border-radius: 1rem;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(20px);
-  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 
-  &[data-active='true'] {
-    position: relative;
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0);
+  &:hover {
+    border-color: rgba(14, 165, 233, 0.3);
+    box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -149,14 +173,4 @@
   }
 }
 
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-
-  &.reveal-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* [data-reveal] definido em global.scss */

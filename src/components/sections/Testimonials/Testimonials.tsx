@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useRef, useCallback } from 'react';
 import { SECTION_IMAGES } from '../../../config/images';
 import styles from './Testimonials.module.scss';
 
@@ -24,21 +24,21 @@ const ITEMS = [
 ];
 
 export function Testimonials() {
-  const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState<'next' | 'prev'>('next');
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const cardWidth = 320 + 20; // largura do card + gap
 
-  const go = useCallback((dir: 'next' | 'prev') => {
-    setDirection(dir);
-    setIndex((i) => {
-      if (dir === 'next') return (i + 1) % ITEMS.length;
-      return (i - 1 + ITEMS.length) % ITEMS.length;
-    });
+  const scrollToIndex = useCallback((i: number) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>(`[data-card-index="${i}"]`);
+    card?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }, []);
 
-  useEffect(() => {
-    const t = setInterval(() => go('next'), 6000);
-    return () => clearInterval(t);
-  }, [go]);
+  const scrollBy = useCallback((delta: number) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollBy({ left: delta * cardWidth, behavior: 'smooth' });
+  }, [cardWidth]);
 
   return (
     <section className={styles.section} id="depoimentos">
@@ -54,13 +54,18 @@ export function Testimonials() {
           <img src={SECTION_IMAGES.depoimentos} alt="Clientes que confiam" />
         </div>
 
-        <div className={styles.carousel}>
-          <div className={styles.track}>
+        <div className={styles.scrollWrap}>
+          <div
+            ref={scrollRef}
+            className={styles.horizontalScroll}
+            role="region"
+            aria-label="Depoimentos em carrossel"
+          >
             {ITEMS.map((item, i) => (
               <blockquote
                 key={i}
                 className={styles.card}
-                data-active={i === index}
+                data-card-index={i}
                 data-reveal
               >
                 <p className={styles.quote}>"{item.quote}"</p>
@@ -76,30 +81,24 @@ export function Testimonials() {
             <button
               type="button"
               className={styles.navBtn}
-              onClick={() => go('prev')}
+              onClick={() => scrollBy(-1)}
               aria-label="Depoimento anterior"
             >
               ‹
             </button>
-            <div className={styles.dots}>
-              {ITEMS.map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  className={styles.dot}
-                  data-active={i === index}
-                  onClick={() => {
-                    setDirection(i > index ? 'next' : 'prev');
-                    setIndex(i);
-                  }}
-                  aria-label={`Ir ao depoimento ${i + 1}`}
-                />
-              ))}
-            </div>
+            {ITEMS.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                className={styles.dot}
+                onClick={() => scrollToIndex(i)}
+                aria-label={`Ir ao depoimento ${i + 1}`}
+              />
+            ))}
             <button
               type="button"
               className={styles.navBtn}
-              onClick={() => go('next')}
+              onClick={() => scrollBy(1)}
               aria-label="Próximo depoimento"
             >
               ›
