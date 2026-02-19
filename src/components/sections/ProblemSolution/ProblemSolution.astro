@@ -1,6 +1,5 @@
 ---
-import InteractiveImage from '@components/ui/InteractiveImage/InteractiveImage.astro';
-import { SECTION_IMAGES } from '../../../config/images';
+import solucaoVideo from '../../../assets/videos/solucao_video.mp4';
 
 const problems = [
   { text: 'Alto custo de manutenção e operação', icon: '⛽' },
@@ -17,6 +16,18 @@ const solutions = [
 ];
 ---
 <section class="problem-solution" id="problema-solucao">
+  <div class="problem-solution__bg" aria-hidden>
+    <video
+      class="problem-solution__video"
+      src={solucaoVideo}
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+    />
+    <div class="problem-solution__overlay" aria-hidden />
+  </div>
   <div class="problem-solution__inner">
     <h2 class="section-heading" data-reveal>
       Do problema à <span class="highlight">solução</span>
@@ -26,12 +37,6 @@ const solutions = [
     </p>
 
     <div class="problem-solution__row">
-      <div class="problem-solution__visual" data-reveal>
-        <InteractiveImage
-          src={SECTION_IMAGES.problemaSolucao}
-          alt="Inspeção e soluções para frotas"
-        />
-      </div>
       <div class="problem-solution__grid">
       <div class="problem-solution__block problems" data-reveal>
         <h3 class="problem-solution__title">Problemas comuns</h3>
@@ -65,7 +70,9 @@ const solutions = [
 
 <style lang="scss">
   .problem-solution {
+    position: relative;
     padding-block: 3rem;
+    overflow: hidden;
     @media (min-width: 768px) {
       padding-block: 4rem;
     }
@@ -74,7 +81,49 @@ const solutions = [
     }
     background-color: #0f172a;
 
+    &__bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    &__video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.5;
+      transition: opacity 0.6s ease;
+    }
+
+    &:hover &__video {
+      opacity: 0.65;
+    }
+
+    &__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(15, 23, 42, 0.92) 0%,
+        rgba(15, 23, 42, 0.88) 50%,
+        rgba(15, 23, 42, 0.94) 100%
+      );
+    }
+
     &__inner {
+      position: relative;
+      z-index: 1;
       max-width: 1200px;
       margin-inline: auto;
       padding-inline: 1.5rem;
@@ -84,34 +133,17 @@ const solutions = [
     }
 
     &__row {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
       margin-top: 2.5rem;
-      @media (min-width: 992px) {
-        flex-direction: row;
-        align-items: center;
-        gap: 3rem;
-      }
-    }
-
-    &__visual {
-      flex-shrink: 0;
-      width: 100%;
-      max-width: 100%;
-      min-width: 0;
-      @media (min-width: 992px) {
-        width: 38%;
-        max-width: 380px;
-      }
     }
 
     &__grid {
       display: grid;
       gap: 2rem;
-      flex: 1;
       min-width: 0;
+      max-width: 900px;
+      margin-inline: auto;
       grid-template-columns: 1fr;
+      perspective: 1200px;
       @media (min-width: 768px) {
         grid-template-columns: 1fr auto 1fr;
         align-items: center;
@@ -120,16 +152,57 @@ const solutions = [
     }
 
     &__block {
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-        opacity 0.4s ease;
+      padding: 1.75rem;
+      border-radius: 1rem;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(148, 163, 184, 0.1);
+      transform: perspective(800px) rotateX(0);
+      transform-origin: center bottom;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.3s ease, box-shadow 0.35s ease;
+
+      &:hover,
+      &.problems:hover,
+      &.solutions:hover {
+        transform: perspective(800px) rotateX(-10deg) translateY(-4px);
+        border-color: rgba(14, 165, 233, 0.25);
+        box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.5),
+          0 0 0 1px rgba(14, 165, 233, 0.08);
+      }
+
+      &.problems:hover {
+        border-color: rgba(248, 113, 113, 0.2);
+        box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.5),
+          0 0 0 1px rgba(248, 113, 113, 0.06);
+      }
+
+      &.solutions:hover {
+        border-color: rgba(16, 185, 129, 0.2);
+        box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.5),
+          0 0 0 1px rgba(16, 185, 129, 0.08);
+      }
     }
 
     &__title {
       font-size: 1.25rem;
       margin: 0 0 1rem;
       color: #f8fafc;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      &::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          rgba(148, 163, 184, 0.3),
+          transparent
+        );
+      }
     }
 
     &__list {
@@ -142,23 +215,32 @@ const solutions = [
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      padding: 0.5rem 0;
+      padding: 0.6rem 0.75rem;
+      margin: 0 -0.75rem;
+      border-radius: 0.5rem;
       font-size: 1rem;
-      transition: transform 0.2s ease;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+        background 0.2s ease;
 
       .icon {
         flex-shrink: 0;
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       &:hover {
-        transform: translateX(4px);
+        transform: translateX(6px);
+        background: rgba(255, 255, 255, 0.04);
+
+        .icon {
+          transform: scale(1.15);
+        }
       }
     }
 
     .problem {
       color: #94a3b8;
       .icon {
-        opacity: 0.8;
+        opacity: 0.9;
       }
     }
 
@@ -170,10 +252,22 @@ const solutions = [
     }
 
     &__arrow {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       color: #0ea5e9;
       text-align: center;
+      opacity: 0.8;
+      animation: problemSolutionArrow 2.5s ease-in-out infinite;
+    }
+  }
+
+  @keyframes problemSolutionArrow {
+    0%, 100% {
       opacity: 0.7;
+      transform: translateX(0);
+    }
+    50% {
+      opacity: 1;
+      transform: translateX(4px);
     }
   }
 
@@ -199,6 +293,57 @@ const solutions = [
     &.reveal-visible {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  /* Cards: reveal não sobrescreve o transform; hover precisa vencer a especificidade */
+  .problem-solution__block[data-reveal] {
+    transform: perspective(800px) rotateX(0);
+    transform-origin: center bottom;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.3s ease, box-shadow 0.35s ease;
+
+    &.reveal-visible {
+      opacity: 1;
+      transform: perspective(800px) rotateX(0);
+    }
+
+    &.reveal-visible:hover {
+      transform: perspective(800px) rotateX(-10deg) translateY(-4px);
+      border-color: rgba(14, 165, 233, 0.25);
+      box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(14, 165, 233, 0.08);
+    }
+
+    &.problems.reveal-visible:hover {
+      border-color: rgba(248, 113, 113, 0.2);
+      box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(248, 113, 113, 0.06);
+    }
+
+    &.solutions.reveal-visible:hover {
+      border-color: rgba(16, 185, 129, 0.2);
+      box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(16, 185, 129, 0.08);
+    }
+  }
+
+  .problem-solution__item {
+    opacity: 0;
+    transform: translateX(-12px);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      background 0.2s ease;
+
+    .problem-solution__block.reveal-visible & {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @for $i from 0 through 7 {
+      &:nth-child(#{$i + 1}) {
+        transition-delay: #{$i * 0.06}s;
+      }
     }
   }
 </style>
