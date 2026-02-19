@@ -1,5 +1,7 @@
 ---
+import { COMING_SOON } from '../config/site';
 import BaseLayout from '@layouts/BaseLayout.astro';
+import ComingSoon from '@components/ComingSoon/ComingSoon.astro';
 import { Hero } from '@components/sections/Hero';
 import ProblemSolution from '@components/sections/ProblemSolution/ProblemSolution.astro';
 import { Services } from '@components/sections/Services';
@@ -9,13 +11,17 @@ import Differentiators from '@components/sections/Differentiators/Differentiator
 import { Cta } from '@components/sections/Cta';
 import Footer from '@components/sections/Footer/Footer.astro';
 ---
-<BaseLayout>
-  <Hero client:load />
-  <ProblemSolution />
-  <Services client:visible />
-  <Metrics client:visible />
-  <Testimonials client:visible />
-  <Differentiators />
-  <Cta client:load />
-  <Footer />
-</BaseLayout>
+{COMING_SOON ? (
+  <ComingSoon />
+) : (
+  <BaseLayout>
+    <Hero client:load />
+    <ProblemSolution />
+    <Services client:visible />
+    <Metrics client:visible />
+    <Testimonials client:visible />
+    <Differentiators />
+    <Cta client:load />
+    <Footer />
+  </BaseLayout>
+)}
