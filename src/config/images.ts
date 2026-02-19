@@ -1,22 +1,34 @@
 /**
- * Imagens da landing page – uma por seção, tema frota/logística. Unsplash, uso livre.
+ * Imagens da landing page – Picsum Photos (carregamento confiável, sem API).
+ * Formato: https://picsum.photos/seed/{seed}/{width}/{height}
  */
 
-const U = (id: string, w = 800) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=85`;
+const P = (seed: string, w = 800, h = 500) =>
+  `https://picsum.photos/seed/${seed}/${w}/${h}`;
 
 // Hero
-export const HERO_BACKGROUND = U('1601584115197-04ecc0da31d7', 1920);
+export const HERO_BACKGROUND = P('frota-hero', 1920, 1080);
 export const HERO_BACKGROUND_ESPHERA = 'https://espherasolucoes.com.br/medias/img/frota_carros.png';
 
-// Seções – imagem que condiz com cada uma
+// Seções – uma imagem por seção (seed fixo = mesma imagem sempre)
 export const SECTION_IMAGES = {
-  problemaSolucao: U('1581092160606-5098d274269e'), // inspeção/ferramentas
-  servicos: U('1621902930995-2b570d534d88'),        // caminhão/logística
-  metricas: U('1551288049-c64f5fcf8293'),           // gráficos/resultados
-  depoimentos: U('1573496359142-b8d87734a5a2'),     // profissional/confiança
-  diferenciais: U('1557804506-669a67965ba0'),       // reunião/equipe
+  problemaSolucao: P('problema-solucao', 800, 500),
+  servicos: P('servicos-frota', 800, 500),
+  metricas: P('metricas', 800, 500),
+  depoimentos: P('depoimentos', 800, 500),
+  diferenciais: P('diferenciais', 800, 500),
 };
 
 // CTA
-export const CTA_BACKGROUND = U('1522071820081-009f0129c71c', 1920);
+export const CTA_BACKGROUND = P('cta-frota', 1920, 1080);
+
+// Uma imagem por card da seção Serviços (aparece na interação)
+export const SERVICE_CARD_IMAGES: Record<string, string> = {
+  'Vistorias Automotivas': P('card-vistorias', 600, 400),
+  'Treinamentos': P('card-treinamentos', 600, 400),
+  'Laudos Técnicos': P('card-laudos', 600, 400),
+  'Inspeção de Capacitação Técnica': P('card-inspecao', 600, 400),
+  'Assessoria Técnica': P('card-assessoria', 600, 400),
+  'Saúde, Segurança e Meio Ambiente': P('card-ssma', 600, 400),
+  'Limpeza e Conservação de Frotas': P('card-limpeza', 600, 400),
+};

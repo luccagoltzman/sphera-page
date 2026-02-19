@@ -1,5 +1,5 @@
 import { useRef, useCallback } from 'react';
-import { SECTION_IMAGES } from '../../../config/images';
+import { SECTION_IMAGES, SERVICE_CARD_IMAGES } from '../../../config/images';
 import styles from './Services.module.scss';
 
 const SERVICES = [
@@ -96,6 +96,7 @@ function ServiceCard({
   description: string;
 }) {
   const tilt = useTilt();
+  const cardImage = SERVICE_CARD_IMAGES[title] ?? SECTION_IMAGES.servicos;
   return (
     <div
       ref={tilt.ref}
@@ -103,6 +104,15 @@ function ServiceCard({
       onMouseMove={tilt.onMouseMove}
       onMouseLeave={tilt.onMouseLeave}
     >
+      <div className={styles.cardImageWrap} aria-hidden>
+        <img
+          src={cardImage}
+          alt=""
+          className={styles.cardImage}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
       <span className={styles.cardIcon} aria-hidden>
         {icon}
       </span>
